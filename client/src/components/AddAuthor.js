@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 import {
   getAuthorsQuery,
-  addBookMutation,
+  addAuthorMutation,
   getBooksQuery
 } from '../queries/queries';
 
@@ -44,27 +44,20 @@ class AddBook extends Component {
   render() {
     return (
       <form id='add-book' onSubmit={this.submitForm.bind(this)}>
-        <h2>Add A Book</h2>
+        <h2>Add an Author</h2>
         <div className='field'>
-          <label>Book name:</label>
+          <label>Author:</label>
           <input
             type='text'
             onChange={e => this.setState({ name: e.target.value })}
           />
         </div>
         <div className='field'>
-          <label>Genre:</label>
+          <label>Age:</label>
           <input
             type='text'
             onChange={e => this.setState({ genre: e.target.value })}
           />
-        </div>
-        <div className='field'>
-          <label>Author:</label>
-          <select onChange={e => this.setState({ authorId: e.target.value })}>
-            <option>Select author</option>
-            {this.displayAuthors()}
-          </select>
         </div>
         <button>+</button>
       </form>
@@ -74,5 +67,5 @@ class AddBook extends Component {
 
 export default compose(
   graphql(getAuthorsQuery, { name: 'getAuthorsQuery' }),
-  graphql(addBookMutation, { name: 'addBookMutation' })
+  graphql(addAuthorMutation, { name: 'addBookMutation' })
 )(AddBook);
