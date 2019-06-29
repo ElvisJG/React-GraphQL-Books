@@ -4,7 +4,9 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 
 const app = express();
-mongoose.connect('halp');
+mongoose.connect(
+  'mongodb+srv://Elvis:txtTmPXPR2ywBLY@cluster0-5dffu.mongodb.net/test?retryWrites=true&w=majority'
+);
 mongoose.connection.once('open', () => {
   console.log('connected to database');
 });
