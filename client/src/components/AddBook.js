@@ -12,7 +12,8 @@ class AddBook extends Component {
     this.state = {
       name: '',
       genre: '',
-      authorId: ''
+      authorId: '',
+      selectedValues: null
     };
   }
   displayAuthors() {
@@ -40,6 +41,11 @@ class AddBook extends Component {
       },
       refetchQueries: [{ query: getBooksQuery }]
     });
+    this.setState({
+      name: '',
+      genre: '',
+      authorId: ''
+    });
   }
   render() {
     return (
@@ -50,6 +56,7 @@ class AddBook extends Component {
           <input
             type='text'
             onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.name}
           />
         </div>
         <div className='field'>
@@ -57,12 +64,13 @@ class AddBook extends Component {
           <input
             type='text'
             onChange={e => this.setState({ genre: e.target.value })}
+            value={this.state.genre}
           />
         </div>
         <div className='field'>
           <label>Author:</label>
           <select onChange={e => this.setState({ authorId: e.target.value })}>
-            <option>Select author</option>
+            <option value={this.state.selectedValues}>Select author</option>
             {this.displayAuthors()}
           </select>
         </div>

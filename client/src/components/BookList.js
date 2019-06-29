@@ -4,7 +4,6 @@ import { getBooksQuery } from '../queries/queries';
 
 // components
 import BookDetails from './BookDetails';
-import AddAuthor from './AddAuthor';
 
 class BookList extends Component {
   constructor(props) {
